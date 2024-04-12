@@ -1,0 +1,6 @@
+source;share/pico_visualizer/hook/pythonpath.ps1
+source;share/pico_visualizer/hook/pythonpath.dsv
+source;share/pico_visualizer/hook/pythonpath.sh
+source;share/pico_visualizer/hook/ament_prefix_path.ps1
+source;share/pico_visualizer/hook/ament_prefix_path.dsv
+source;share/pico_visualizer/hook/ament_prefix_path.sh
