@@ -10,6 +10,27 @@ def generate_launch_description():
     # Launch description
     ld = LaunchDescription()
 
+    # Declare the launch argument
+    declare_ekf_param_file_cmd = DeclareLaunchArgument(
+        'ekf_param_file',
+        default_value=os.path.join(
+            get_package_share_directory('pico_visualizer'),
+            'config',
+            'ekf.yaml'
+        ),
+        description='Full path to the EKF parameter file to use'
+    )
+    ld.add_action(declare_ekf_param_file_cmd)
+    
+    # Launch robot_localization node
+    robot_localization_node = Node(
+        package='robot_localization',
+        executable='ekf_node',
+        parameters=[LaunchConfiguration('ekf_param_file')],
+        output='screen'
+    )
+    ld.add_action(robot_localization_node)
+
     # Launch pico_visualizer node
     pico_visualizer_node = Node(
         package='pico_visualizer',
